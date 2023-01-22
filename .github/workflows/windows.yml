@@ -24,6 +24,5 @@ jobs:
 
     - name: Run rebuild script
       run: |
-        cd ${GITHUB_WORKSPACE}/script
+        cd script
         rebuild_libs_windows.cmd cmake
-        cd ${GITHUB_WORKSPACE}
