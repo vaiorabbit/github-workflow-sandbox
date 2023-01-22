@@ -31,8 +31,8 @@ jobs:
       id: update
       run: git submodule update --remote --recursive
 
-    - name: Setup libGL
-      run: sudo apt -y install libgl-dev
+    - name: Setup OpenGL
+      run: sudo apt -y install libgl-dev libxrandr-dev mesa-common-dev
 
     - name: Check before
       run: ls -l lib/*
