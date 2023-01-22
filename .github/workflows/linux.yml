@@ -45,3 +45,10 @@ jobs:
 
     - name: Check after
       run: ls -l lib/*
+
+    - name: Commit new libraries
+      run: |
+        git config user.name "bot
+        git config user.email "bot
+        git commit -m "commit by bot"
+        git push
