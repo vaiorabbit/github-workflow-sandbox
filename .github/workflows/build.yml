@@ -31,9 +31,8 @@ jobs:
       id: update
       run: git submodule update --remote --recursive
 
-    # - name: Run git status
-    #   id: status
-    #   run: echo "::set-output name=status::$(git status -s)"
+    - name: Setup libGL
+      run: sudo apt -y install libgl-dev
 
     - name: Check before
       run: ls -l lib/*
