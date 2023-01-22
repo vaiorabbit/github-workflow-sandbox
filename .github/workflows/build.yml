@@ -39,7 +39,10 @@ jobs:
       run: ls -l lib/*
 
     - name: Run rebuild script
-      run: bash script/rebuild_libs_linux.sh
+      run: |
+        cd ${GITHUB_WORKSPACE}/script
+        bash ./rebuild_libs_linux.sh
+        cd ${GITHUB_WORKSPACE}
 
     - name: Check after
       run: ls -l lib/*
