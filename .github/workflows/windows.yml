@@ -23,6 +23,7 @@ jobs:
       run: git submodule update --remote --recursive
 
     - name: Run rebuild script
+      shell: cmd
       run: |
         cd script
         rebuild_libs_windows.cmd cmake
