@@ -25,7 +25,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        submodules: recursive
+        ref: 'update'
+        fetch-depth: 1
 
     - name: Update submodules
       id: update
@@ -48,7 +49,5 @@ jobs:
 
     - name: Commit new libraries
       run: |
-        git config user.name "bot
-        git config user.email "bot
         git commit -a -m "commit by bot"
-        git push
+        git push -u origin update
