@@ -28,7 +28,6 @@ jobs:
         submodules: recursive
 
     - name: Update submodules
-      run: |
       id: update
       run: git submodule update --remote --recursive
 
