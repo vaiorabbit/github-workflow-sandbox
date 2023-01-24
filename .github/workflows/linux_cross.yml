@@ -25,7 +25,7 @@ jobs:
       run: git submodule update --remote --recursive
 
     - name: Setup OpenGL and cross compilation tools
-      run: sudo apt -y install libgl-dev libxrandr-dev mesa-common-dev libxinerama-dev libxcursor-dev libxi-dev libstdc++-10-dev-arm64-cross
+      run: sudo apt -y install libgl-dev libxrandr-dev mesa-common-dev libxinerama-dev libxcursor-dev libxi-dev libstdc++-10-dev-arm64-cross g++-aarch64-linux-gnu
 
     - name: Check before
       run: ls -l lib/*
