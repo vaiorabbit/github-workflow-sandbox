@@ -47,9 +47,11 @@ jobs:
       run: git submodule update --remote --recursive
 
     - name: Check before
+      continue-on-error: true
       run: |
         ls -l lib/*
         ls -l /lib/aarch64-linux-gnu/*
+        ls -l /usr/include/*
         ls -l /usr/include/aarch64-linux-gnu/*
 
     - name: Run rebuild script
