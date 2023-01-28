@@ -31,7 +31,7 @@ jobs:
 
     - name: Setup OpenGL and cross compilation tools
       run: |
-        sudo apt -y install libc6-dev-arm64-cross gcc-8-aarch64-linux-gnu # libstdc++-10-dev-arm64-cross g++-aarch64-linux-gnu
+        sudo apt -y install libc6-dev-arm64-cross gcc-8-aarch64-linux-gnu libstdc++-10-dev-arm64-cross g++-aarch64-linux-gnu
         sudo apt -y install libopengl-dev:arm64 libxrandr-dev:arm64 mesa-common-dev:arm64 libxinerama-dev:arm64 libxcursor-dev:arm64 libxi-dev:arm64
 
     - name: Checkout
@@ -55,7 +55,9 @@ jobs:
         cd ${GITHUB_WORKSPACE}
 
     - name: Check after
-      run: ls -l lib/*
+      run: |
+        ls -l lib/*
+        ls -l /lib/aarch64-linux-gnu/*
 
     - name: Commit new libraries
       continue-on-error: true
