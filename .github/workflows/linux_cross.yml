@@ -38,8 +38,8 @@ jobs:
 
     - name: Setup OpenGL and cross compilation tools
       run: |
-        sudo apt -y install libopengl-dev libxrandr-dev mesa-common-dev libxinerama-dev libxcursor-dev libxi-dev libstdc++-12-dev-arm64-cross g++-aarch64-linux-gnu
-        sudo apt -y install libopengl-dev:arm64 libxrandr-dev:arm64 mesa-common-dev:arm64 libxinerama-dev:arm64 libxcursor-dev:arm64 libxi-dev:arm64
+        sudo apt -y install libstdc++-12-dev-arm64-cross g++-aarch64-linux-gnu
+        sudo apt -y install libopengl-dev:arm64 libglu1-mesa-dev:arm64
 
     - name: Check before
       run: ls -l lib/*
