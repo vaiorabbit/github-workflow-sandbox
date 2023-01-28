@@ -13,19 +13,9 @@ jobs:
       max-parallel: 1
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        ref: 'update'
-        fetch-depth: 1
-        submodules: recursive
-
-    - name: Update submodules
-      id: update
-      run: git submodule update --remote --recursive
-
     - name: Update sources.list for cross compilation tools
       run: |
+        sudo dpkg --add-architecture arm64
         sudo touch /etc/apt/sources.list.d/arm-cross-compile-sources.list
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy main restricted" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-updates main restricted" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
@@ -40,6 +30,17 @@ jobs:
       run: |
         sudo apt -y install libstdc++-12-dev-arm64-cross g++-aarch64-linux-gnu
         sudo apt -y install libopengl-dev:arm64 libglu1-mesa-dev:arm64
+
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        ref: 'update'
+        fetch-depth: 1
+        submodules: recursive
+
+    - name: Update submodules
+      id: update
+      run: git submodule update --remote --recursive
 
     - name: Check before
       run: ls -l lib/*
