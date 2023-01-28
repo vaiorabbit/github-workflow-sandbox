@@ -53,6 +53,7 @@ jobs:
         ls -l /lib/aarch64-linux-gnu/*
         ls -l /usr/include/*
         ls -l /usr/include/aarch64-linux-gnu/*
+        ls -l /usr/aarch64-linux-gnu/*
 
     - name: Run rebuild script
       run: |
