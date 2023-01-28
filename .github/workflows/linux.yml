@@ -44,4 +44,5 @@ jobs:
         git config user.name "bot"
         git config user.email "bot"
         git commit -a -m "commit by bot"
+        git add lib/*
         git push -u origin update
