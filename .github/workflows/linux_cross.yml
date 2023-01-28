@@ -25,7 +25,7 @@ jobs:
       run: git submodule update --remote --recursive
 
     - name: Update sources.list for cross compilation tools
-    - run: |
+      run: |
         sudo touch /etc/apt/sources.list.d/arm-cross-compile-sources.list
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy main restricted" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-updates main restricted" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
