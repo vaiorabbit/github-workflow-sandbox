@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - name: Update sources.list for cross compilation tools
+      continue-on-error: true
       run: |
         sudo dpkg --add-architecture arm64
         sudo touch /etc/apt/sources.list.d/arm-cross-compile-sources.list
