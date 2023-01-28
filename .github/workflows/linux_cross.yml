@@ -35,7 +35,7 @@ jobs:
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-updates multiverse" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
         sudo bash -c 'echo "deb [arch=arm64] http://ports.ubuntu.com/ jammy-backports main restricted universe multiverse" >> /etc/apt/sources.list.d/arm-cross-compile-sources.list'
         sudo apt update
-        
+
     - name: Setup OpenGL and cross compilation tools
       run: |
         sudo apt -y install libopengl-dev libxrandr-dev mesa-common-dev libxinerama-dev libxcursor-dev libxi-dev libstdc++-12-dev-arm64-cross g++-aarch64-linux-gnu
@@ -53,9 +53,9 @@ jobs:
     - name: Check after
       run: ls -l lib/*
 
-    # - name: Commit new libraries
-    #   run: |
-    #     git config user.name "bot"
-    #     git config user.email "bot"
-    #     git commit -a -m "commit by bot"
-    #     git push -u origin update
+    - name: Commit new libraries
+      run: |
+        git config user.name "bot"
+        git config user.email "bot"
+        git commit -a -m "commit by bot"
+        git push -u origin update
