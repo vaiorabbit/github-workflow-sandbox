@@ -21,7 +21,7 @@ jobs:
         fetch-depth: 1
         submodules: recursive
 
-    - name: Check default MSYS2 status
+    - name: Install MSYS2 luajit
       continue-on-error: true
       shell: cmd
       run: |
@@ -43,7 +43,7 @@ jobs:
       shell: cmd
       run: |
         cd imgui_dll
-        build_raylib_windows.bat cmake
+        build_imgui_windows.cmd cmake
 
     # # https://github.com/msys2/setup-msys2
     # - name: Setup MSYS2
