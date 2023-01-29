@@ -1,0 +1,21 @@
+name: Build cimgui (Windows)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: windows-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+
+    steps:
+    - name: Get luajit
+      continue-on-error: true
+      run: |
+        bash pacman-key --init
+        pacman -S --noconfirm mingw-w64-x86_64-luajit
+        luajit -v
