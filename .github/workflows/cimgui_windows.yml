@@ -17,7 +17,7 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: cimgui/cimgui
-        path: cimgui
+        path: imgui_dll/cimgui
         fetch-depth: 1
         submodules: recursive
 
@@ -34,10 +34,16 @@ jobs:
     - name: Generate cimgui code
       shell: cmd
       run: |
-        cd cimgui\generator
+        cd imgui_dll\cimgui\generator
         C:\msys64\mingw64\bin\luajit.exe generator.lua gcc "" glfw opengl3 opengl2 sdl
-        cd ..\..
         git diff
+        cd ..\..\..
+
+    - name: Build imgui dll
+      shell: cmd
+      run: |
+        cd imgui_dll
+        build_raylib_windows.bat cmake
 
     # # https://github.com/msys2/setup-msys2
     # - name: Setup MSYS2
@@ -50,3 +56,7 @@ jobs:
     #     pacman -S --noconfirm mingw-w64-x86_64-luajit
     #     which luajit
     #     luajit -v
+
+    - name: Check after
+      run: |
+        dir lib\*
