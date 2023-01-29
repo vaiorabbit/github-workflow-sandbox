@@ -15,7 +15,7 @@ jobs:
     steps:
     - name: Get luajit
       continue-on-error: true
+      shell: cmd
       run: |
-        bash pacman-key --init
         pacman -S --noconfirm mingw-w64-x86_64-luajit
         luajit -v
