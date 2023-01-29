@@ -38,11 +38,13 @@ jobs:
         C:\msys64\mingw64\bin\luajit.exe generator.lua gcc "" glfw opengl3 opengl2 sdl
         git diff
         cd ..\..\..
+        dir
 
     - name: Build imgui dll
       shell: cmd
       run: |
         cd imgui_dll
+        dir
         build_imgui_windows.cmd cmake
 
     # # https://github.com/msys2/setup-msys2
