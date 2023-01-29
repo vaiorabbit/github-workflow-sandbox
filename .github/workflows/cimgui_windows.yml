@@ -13,6 +13,13 @@ jobs:
       max-parallel: 1
 
     steps:
+    - name: Check default MSYS2 status
+      continue-on-error: true
+      shell: cmd
+      run: |
+        dir /w C:\msys64
+        dir /w C:\msys64\usr\bin
+
     # https://github.com/msys2/setup-msys2
     - name: Setup MSYS2
       uses: msys2/setup-msys2@v2
@@ -22,4 +29,5 @@ jobs:
       shell: msys2 {0}
       run: |
         pacman -S --noconfirm mingw-w64-x86_64-luajit
+        which luajit
         luajit -v
