@@ -13,24 +13,40 @@ jobs:
       max-parallel: 1
 
     steps:
+    - name: Checkout cimgui
+      uses: actions/checkout@v3
+      with:
+        repository: cimgui/cimgui
+        path: cimgui
+        fetch-depth: 1
+        submodules: recursive
+
     - name: Check default MSYS2 status
       continue-on-error: true
       shell: cmd
       run: |
         C:\msys64\usr\bin\pacman -S --noconfirm mingw-w64-x86_64-luajit
-        dir /w C:\msys64
-        dir /w C:\msys64\mingw64\bin
-        dir /w C:\msys64\usr\bin
         C:\msys64\mingw64\bin\luajit.exe -v
+    # dir /w C:\msys64
+    # dir /w C:\msys64\mingw64\bin
+    # dir /w C:\msys64\usr\bin
 
-    # https://github.com/msys2/setup-msys2
-    - name: Setup MSYS2
-      uses: msys2/setup-msys2@v2
-
-    - name: Get luajit
-      continue-on-error: true
-      shell: msys2 {0}
+    - name: Generate cimgui code
+      shell: cmd
       run: |
-        pacman -S --noconfirm mingw-w64-x86_64-luajit
-        which luajit
-        luajit -v
+        cd cimgui\generator
+        C:\msys64\mingw64\bin\luajit.exe generator.lua gcc "" glfw opengl3 opengl2 sdl
+        cd ..\..
+		git diff
+
+    # # https://github.com/msys2/setup-msys2
+    # - name: Setup MSYS2
+    #   uses: msys2/setup-msys2@v2
+
+    # - name: Get luajit
+    #   continue-on-error: true
+    #   shell: msys2 {0}
+    #   run: |
+    #     pacman -S --noconfirm mingw-w64-x86_64-luajit
+    #     which luajit
+    #     luajit -v
