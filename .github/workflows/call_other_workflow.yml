@@ -5,4 +5,4 @@ on:
 
 jobs:
   call-workflow-1-in-local-repo:
-    uses: vaiorabbit/github-workflow-sandbox/.github/workflows/linux.yml@update
+    uses: ./.github/workflows/linux.yml
