@@ -1,0 +1,8 @@
+name: Call other workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-workflow-1-in-local-repo:
+    uses: vaiorabbit/github-workflow-sandbox/.github/workflows/linux.yml
